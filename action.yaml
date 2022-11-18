@@ -55,12 +55,18 @@ runs:
 
         DATEDJ=$(date +%F)
 
-        if [ "${{ inputs.ACTION }}" == "export" ]; then
-          gsutil cp ./${DATEDJ}-dump.sql.gz gs://$BUCKET_NAME
-          cp ./${DATEDJ}-dump.sql.gz ./latest.sql.gz
-          gsutil cp ./latest.sql.gz gs://$BUCKET_NAME
-        fi
+        # if [ "${{ inputs.ACTION }}" == "export" ]; then
+        #   gsutil cp ./${DATEDJ}-dump.sql.gz gs://$BUCKET_NAME
+        #   cp ./${DATEDJ}-dump.sql.gz ./latest.sql.gz
+        #   gsutil cp ./latest.sql.gz gs://$BUCKET_NAME
+        # fi
 
-        if [ "${{ inputs.ACTION }}" == "import" ]; then
-          gsutil cp gs://$BUCKET_NAME/latest.sql.gz ./latest.sql.gz 
-        fi
+        # if [ "${{ inputs.ACTION }}" == "import" ]; then
+        #   gsutil cp gs://$BUCKET_NAME/latest.sql.gz ./latest.sql.gz 
+        # fi
+
+    - name: Checkout
+      uses: actions/checkout@v3  
+    - name: Start test
+      run: make test
+      timeout-minutes: 6  
