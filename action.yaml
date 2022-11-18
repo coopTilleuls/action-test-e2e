@@ -52,8 +52,6 @@ runs:
         $SQL_PROXY_AUTH_BASE64
         EOF
 
-        tac $AUTH_FILE 
-
         gcloud auth activate-service-account --key-file $AUTH_FILE
 
         DATEDJ=$(date +%F)
@@ -72,4 +70,4 @@ runs:
       uses: actions/checkout@v3  
     - name: Start test
       shell: Start test
-      run: make test 
+      run: make build 
