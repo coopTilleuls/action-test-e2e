@@ -53,7 +53,10 @@ runs:
         EOF
 
         gcloud auth activate-service-account --key-file $AUTH_FILE
-
+    - uses: ConorMacBride/install-package@v1
+      name: Install make
+      with:
+        apt: make
     - name: Start test
       shell: Start test
       run: make test
