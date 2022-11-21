@@ -56,4 +56,4 @@ runs:
 
     - name: Start test
       shell: Start test
-      run: make test 
+      run: make --version 
