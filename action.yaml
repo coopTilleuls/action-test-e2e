@@ -55,4 +55,9 @@ runs:
         gcloud auth activate-service-account --key-file $AUTH_FILE
     - name: Start test
       shell: bash
-      run: make test
+      run: |
+        if [ "$GITHUB_BASE_REF" == "develop" ]; then
+          make test
+        else
+          echo "We only test on pull requests to develop"
+        fi
