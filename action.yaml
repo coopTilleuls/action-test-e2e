@@ -70,8 +70,8 @@ runs:
     - name: Start test
       shell: bash
       run: |
-        #if [ "$GITHUB_BASE_REF" == "develop" ]; then
+        if [ "$GITHUB_BASE_REF" == "develop" ]; then
           make test
-        #else
-        #  echo "We only test on pull requests to develop"
-        #fi
+        else
+          echo "We only test on pull requests to develop"
+        fi
